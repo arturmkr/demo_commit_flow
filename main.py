@@ -15,5 +15,5 @@ def update_json():
     a_file.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     update_json()
