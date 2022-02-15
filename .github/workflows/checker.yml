@@ -31,4 +31,6 @@ jobs:
 
       - name: Run Tests
         run: |
-          python --version
+          pipenv run isort .
+          pipenv run black --check .
+          pipenv run flake8
