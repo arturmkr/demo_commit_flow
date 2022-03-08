@@ -1,5 +1,5 @@
 # Name of workflow to be displyed on Github Console
-name: Build and Test Application
+name: Verify project
 
 # Triggers the workflow on separate events
 on:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test Application
+    name: build
     runs-on: ubuntu-latest
 
     steps:
