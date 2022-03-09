@@ -31,6 +31,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          pipenv run isort .
-          pipenv run black --check .
-          pipenv run flake8
+          pipenv check
