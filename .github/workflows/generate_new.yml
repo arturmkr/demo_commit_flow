@@ -27,11 +27,7 @@ jobs:
           python --version
           pipenv run python main.py
 
-      - uses: actions/checkout@v2
-      - name: Commit report
-        run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-username@users.noreply.github.com'
-          git add -A
-          git commit -m "Automated report"
-          git push
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Generate new id
+          push_options: --force
