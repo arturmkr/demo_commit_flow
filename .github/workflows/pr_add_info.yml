@@ -1,6 +1,9 @@
 name: PR add info
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
     branches:
       - master
@@ -28,6 +31,7 @@ jobs:
           pipenv run python main.py
 
       - uses: stefanzweifel/git-auto-commit-action@v4
+        if: ${GITHUB_REF} != "main"
         with:
           commit_message: Some commit
           push_options: --force
