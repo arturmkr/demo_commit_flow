@@ -6,7 +6,7 @@ on:
   push:
     # Trigger the worflow on push event for all branches
     branches:
-      -  '**'
+      - master
 
 jobs:
   build:
