@@ -39,6 +39,7 @@ jobs:
           branch: update_data
           base: master
           delete-branch: true
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: 'Update data'
           commit-message: Update cache
           labels: |
