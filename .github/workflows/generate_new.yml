@@ -9,20 +9,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-
+      - uses: actions/checkout@v3
       - name: Install pipenv
         run: pip install pipenv
-
-      - name: Install Python Requirements
-        run: pipenv install --ignore-pipfile
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+          cache: 'pipenv'
+          cache-dependency-path: |
+            Pipfile.lock
+      - run: pipenv install --ignore-pipfile
 
       - name: Run Tests
         run: |
