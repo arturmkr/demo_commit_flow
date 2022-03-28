@@ -38,3 +38,7 @@ jobs:
         with:
           branch: update_data
           base: master
+          delete-branch: true
+          title: 'Update data'
+          body: |
+            Updating data
