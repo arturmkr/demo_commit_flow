@@ -40,5 +40,7 @@ jobs:
           base: master
           delete-branch: true
           title: 'Update data'
+          labels: |
+            automated pr
           body: |
             Updating data
