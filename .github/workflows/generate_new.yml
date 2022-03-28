@@ -25,13 +25,13 @@ jobs:
           python --version
           pipenv run python main.py
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Generate new id
-          file_pattern: data.json
-          push_options: --force
-          branch: update_data
-          create_branch: true
+#      - uses: stefanzweifel/git-auto-commit-action@v4
+#        with:
+#          commit_message: Generate new id
+#          file_pattern: data.json
+#          push_options: --force
+#          branch: update_data
+#          create_branch: true
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
@@ -40,7 +40,10 @@ jobs:
           base: master
           delete-branch: true
           title: 'Update data'
+          commit-message: Update cache
           labels: |
             automated pr
           body: |
             Updating data
+          add-paths: |
+            data.json
