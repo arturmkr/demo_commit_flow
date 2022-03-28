@@ -31,7 +31,7 @@ jobs:
           pipenv run python main.py
 
       - uses: stefanzweifel/git-auto-commit-action@v4
-        if: ${GITHUB_REF} != "master"
+        if: ${GITHUB_REF##*/} != "master"
         with:
           commit_message: Some commit
           push_options: --force
