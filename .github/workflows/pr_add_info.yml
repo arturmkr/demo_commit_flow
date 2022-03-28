@@ -40,7 +40,7 @@ jobs:
         run: echo ${{ steps.extract_branch.outputs.branch }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
-        if: ${{ steps.extract_branch.outputs.branch != "master" }}
+        if: ${{ steps.extract_branch.outputs.branch != 'master' }}
         with:
           commit_message: Some commit
           push_options: --force
