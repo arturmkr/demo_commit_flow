@@ -30,17 +30,17 @@ jobs:
           python --version
           pipenv run python main.py
 
-      - name: Get the current branch name
+      - name: Extract branch name
         shell: bash
-        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
-        id: myref
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
 
       - name: Print the current branch name
         shell: bash
-        run: echo ${{ steps.myref.outputs.branch }}
+        run: echo ${{ steps.extract_branch.outputs.branch }}
 
       - uses: stefanzweifel/git-auto-commit-action@v4
-        if: ${{ steps.myref.outputs.branch }} != "master"
+        if: ${{ steps.extract_branch.outputs.branch != "master" }}
         with:
           commit_message: Some commit
           push_options: --force
