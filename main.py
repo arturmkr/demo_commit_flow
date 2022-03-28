@@ -29,5 +29,6 @@ def update_text():
 
 
 if __name__ == "__main__":
-    update_json()
-    update_text()
+    print("hi")
+    # update_json()
+    # update_text()
