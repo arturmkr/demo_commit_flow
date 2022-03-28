@@ -35,6 +35,10 @@ jobs:
         run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
         id: myref
 
+      - name: Print the current branch name
+        shell: bash
+        run: echo ${{ steps.myref.outputs.branch }}
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ steps.myref.outputs.branch }} != "master"
         with:
