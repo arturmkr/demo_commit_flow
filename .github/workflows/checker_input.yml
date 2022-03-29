@@ -30,7 +30,7 @@ jobs:
         run: echo ${{ steps.extract_branch.outputs.branch }}
 
       - name: Check for branch
-        if: ${{ startsWith(steps.extract_branch.outputs.branch, 'release')
+        if: ${{ startsWith(steps.extract_branch.outputs.branch, 'release') }}
         run: echo "release branch"
 
       - name: Check for branch upload
