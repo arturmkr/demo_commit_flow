@@ -1,0 +1,36 @@
+name: check token
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        required: true
+        options:
+          - dev
+          - prod
+        description: Specify environment
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.env }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install pipenv
+        run: pip install pipenv
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+          cache: 'pipenv'
+          cache-dependency-path: |
+            Pipfile.lock
+      - run: pipenv install --ignore-pipfile
+
+      - name: Print token
+        env:
+          auth_token: ${{ secrets.API_TOKEN }}
+        run: |
+          python --version
+          pipenv run python -m script -message $auth_token
+
