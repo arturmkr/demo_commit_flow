@@ -9,6 +9,7 @@ on:
         options:
           - dev
           - prod
+          - stage
         description: Specify environment
 
 jobs:
