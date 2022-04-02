@@ -1,10 +1,8 @@
-# Name of workflow to be displyed on Github Console
 name: Verify project
+  # Trigger the worflow on push event for all branches
 
-# Triggers the workflow on separate events
 on:
   push:
-    # Trigger the worflow on push event for all branches
     branches:
       - master
 

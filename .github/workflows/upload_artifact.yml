@@ -1,0 +1,23 @@
+name: Upload artifact
+  # Trigger the worflow on push event for all branches
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Upload data file
+        uses: actions/upload-artifact@v3
+        with:
+          name: data-file
+          path: data.json
