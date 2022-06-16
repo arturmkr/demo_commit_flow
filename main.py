@@ -16,6 +16,13 @@ def update_json():
 
 
 
+
+
+
+
+
+
+
 def update_text():
     json_file = open("text.json", "r")
     json_object = json.load(json_file)
@@ -29,7 +36,11 @@ def update_text():
     a_file.close()
 
 
+
+
+
+
 if __name__ == "__main__":
-    print("hi")
+    print("helo")
     update_json()
     update_text()
