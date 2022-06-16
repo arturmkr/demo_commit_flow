@@ -15,6 +15,7 @@ def update_json():
     a_file.close()
 
 
+
 def update_text():
     json_file = open("text.json", "r")
     json_object = json.load(json_file)
