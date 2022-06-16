@@ -19,6 +19,10 @@ def update_json():
 
 
 
+
+
+
+
 def update_text():
     json_file = open("text.json", "r")
     json_object = json.load(json_file)
