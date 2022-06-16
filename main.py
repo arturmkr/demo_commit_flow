@@ -36,6 +36,9 @@ def update_text():
     a_file.close()
 
 
+
+
+
 if __name__ == "__main__":
     print("hi")
     update_json()
