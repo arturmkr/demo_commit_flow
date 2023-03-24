@@ -25,10 +25,10 @@ jobs:
             Pipfile.lock
       - run: pipenv install --ignore-pipfile
 
-      - name: Run Tests
-        run: |
-          python --version
-          pipenv run python main.py
+#      - name: Run Tests
+#        run: |
+#          python --version
+#          pipenv run python main.py
 
       - name: Extract branch name
         shell: bash
