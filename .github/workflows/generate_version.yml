@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Generate version.txt
+      - name: Generate and append to version.txt
         run: |
-          echo "$(date +%s)" > version.txt
-          echo "$(git rev-parse --short HEAD)" >> version.txt
+          echo "$(date +%s):$(git rev-parse --short HEAD)" >> version.txt
+
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
