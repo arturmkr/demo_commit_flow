@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  workflow_dispatch:
+#  schedule:
+#    - cron: '0 0 * * 0'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install pipenv
+        run: pip install pipenv
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+          cache: 'pipenv'
+          cache-dependency-path: |
+            Pipfile.lock
+      - run: pipenv install --ignore-pipfile
+
+      - name: Generate version.txt
+        run: |
+          echo "$(date +%s)" > version.txt
+          echo "$(git rev-parse --short HEAD)" >> version.txt
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Generate new id
+          file_pattern: version.txt
+          push_options: --force
+          branch: master
