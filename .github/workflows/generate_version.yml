@@ -22,4 +22,4 @@ jobs:
           commit_message: Generate new id
           file_pattern: version.txt
           push_options: --force
-          branch: master
+          branch: main
