@@ -6,3 +6,4 @@ some
 stuff
 super
 cool
+info
