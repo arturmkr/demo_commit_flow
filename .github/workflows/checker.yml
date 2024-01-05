@@ -4,7 +4,7 @@ name: Verify project
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
