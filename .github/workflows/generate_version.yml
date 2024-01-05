@@ -1,4 +1,4 @@
-name: CI
+name: generate version
 
 on:
   push:
