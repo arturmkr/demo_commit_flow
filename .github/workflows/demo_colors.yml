@@ -1,0 +1,49 @@
+name: shared matrix
+on:
+  workflow_dispatch:
+    inputs:
+      color-type:
+        type: choice
+        required: true
+        options:
+          - cool
+          - warm
+          - neutral
+        description: set color type
+
+jobs:
+  define-matrix:
+    runs-on: ubuntu-latest
+
+    outputs:
+      colors: ${{ steps.colors.outputs.colors }}
+
+    steps:
+      - name: Define Colors
+        id: colors
+        env:
+          COLOR_TYPE: ${{ github.event.inputs.color-type }}
+        run: |
+          if [ "$COLOR_TYPE" = "warm" ]; then
+            echo 'colors=["red", "yellow", "orange"]' >> "$GITHUB_OUTPUT"
+          elif [ "$COLOR_TYPE" = "cool" ]; then
+            echo 'colors=["green", "blue", "purple"]' >> "$GITHUB_OUTPUT"
+          elif [ "$COLOR_TYPE" = "neutral" ]; then
+            echo 'colors=["white", "gray"]' >> "$GITHUB_OUTPUT"
+          else
+            echo 'colors=[]' >> "$GITHUB_OUTPUT"  # Default case, if needed
+          fi
+
+  produce-artifacts:
+    runs-on: ubuntu-latest
+    needs: define-matrix
+    strategy:
+      matrix:
+        color: ${{ fromJSON(needs.define-matrix.outputs.colors) }}
+
+    steps:
+      - name: Define Color
+        env:
+          color: ${{ matrix.color }}
+        run: |
+          echo "$color" > color
